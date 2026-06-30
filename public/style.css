@@ -1,0 +1,294 @@
+:root {
+  --ink: #eaf9f7;
+  --muted: #91aaa7;
+  --panel: rgba(8, 22, 25, 0.78);
+  --line: rgba(166, 244, 229, 0.18);
+  --accent: #60f0d2;
+  --accent-strong: #f2c66d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(96, 240, 210, 0.24), transparent 32rem),
+    radial-gradient(circle at 86% 28%, rgba(242, 198, 109, 0.16), transparent 28rem),
+    linear-gradient(135deg, #041012 0%, #0b1d21 48%, #132015 100%);
+}
+
+.shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent-strong);
+  font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.intro {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.server-field {
+  display: grid;
+  gap: 8px;
+  max-width: 560px;
+  margin-top: 8px;
+  color: var(--accent-strong);
+  font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.server-field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 13px 15px;
+  color: var(--ink);
+  background: rgba(4, 16, 18, 0.68);
+  font: 15px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  outline: none;
+}
+
+.server-field.compact {
+  max-width: 360px;
+}
+
+.server-field input:focus {
+  border-color: rgba(96, 240, 210, 0.72);
+  box-shadow: 0 0 0 4px rgba(96, 240, 210, 0.1);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 22px;
+  color: #071416;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(96, 240, 210, 0.2);
+}
+
+button:disabled { cursor: wait; opacity: 0.68; }
+
+#status {
+  color: var(--muted);
+  font: 13px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.viewer-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: var(--panel);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+}
+
+video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #061014;
+  cursor: grab;
+}
+
+video:active { cursor: grabbing; }
+
+.hint {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  max-width: calc(100% - 36px);
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(4, 16, 18, 0.72);
+  backdrop-filter: blur(12px);
+  font-size: 14px;
+}
+
+.drone-panel {
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(8, 22, 25, 0.72);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.drone-panel h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 40px);
+  line-height: 1;
+}
+
+.drone-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(260px, 1fr) minmax(220px, 320px);
+  gap: 18px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+.control-pad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(62px, 1fr));
+  gap: 10px;
+}
+
+.control-pad button[data-drone-action="forward"] { grid-column: 2; }
+.control-pad button[data-drone-action="left"] { grid-column: 1; }
+.control-pad button[data-drone-action="back"] { grid-column: 2; }
+.control-pad button[data-drone-action="right"] { grid-column: 3; grid-row: 2; }
+.control-pad button[data-drone-action="yaw-left"] { grid-column: 1; }
+.control-pad button[data-drone-action="yaw-right"] { grid-column: 3; }
+.control-pad button[data-drone-action="up"] { grid-column: 1 / span 1; }
+.control-pad button[data-drone-action="down"] { grid-column: 3 / span 1; }
+
+.control-pad button,
+.drone-form button {
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.drone-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 12px;
+}
+
+.drone-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--accent-strong);
+  font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.drone-form input {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 11px;
+  color: var(--ink);
+  background: rgba(4, 16, 18, 0.72);
+  font: 14px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  outline: none;
+}
+
+.drone-form button {
+  grid-column: 1 / -1;
+}
+
+.telemetry {
+  min-height: 128px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: #c9fff4;
+  background: rgba(4, 16, 18, 0.82);
+  font: 14px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre-wrap;
+}
+
+.telemetry.compact {
+  min-height: 94px;
+  font-size: 12px;
+}
+
+.calibration-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.calibration-card {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(4, 16, 18, 0.46);
+}
+
+.calibration-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.calibration-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.calibration-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calibration-actions button {
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.realtime-field {
+  max-width: none;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .shell { padding: 28px 0; }
+  .hint { position: static; margin: 12px; border-radius: 18px; }
+  .drone-layout { grid-template-columns: 1fr; }
+  .drone-form { grid-template-columns: repeat(2, minmax(100px, 1fr)); }
+  .calibration-layout { grid-template-columns: 1fr; }
+}

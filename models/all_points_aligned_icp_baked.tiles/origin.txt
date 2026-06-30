@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "pointCloudFile": "all_points_aligned_icp_baked.tiles/manifest.json",
+  "updatedAt": "2026-06-29T07:41:45.470Z",
+  "ready": true,
+  "origin": {
+    "x": -0.005,
+    "y": -1.219,
+    "z": 0.236
+  },
+  "xAxisPoint": {
+    "x": -0.005,
+    "y": -1.219,
+    "z": 1.236
+  },
+  "xAxis": {
+    "x": 0,
+    "y": 0,
+    "z": 1
+  },
+  "xAxisYaw": -180
+}

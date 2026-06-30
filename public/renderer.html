@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Server Renderer</title>
+    <style>html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #061014; }</style>
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+    <script type="importmap">
+      { "imports": { "three": "https://unpkg.com/three@0.165.0/build/three.module.js" } }
+    </script>
+    <script type="module" src="/renderer.js"></script>
+  </body>
+</html>

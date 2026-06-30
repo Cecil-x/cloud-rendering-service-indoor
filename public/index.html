@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Three.js 云流化点云</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Remote Three.js Rendering</p>
+        <h1>三维点云云渲染 / 云流化 Demo</h1>
+        <p class="intro">服务端 Chromium 负责加载 PLY 点云并渲染 Three.js 场景，浏览器端只接收 WebRTC 视频流并回传交互事件。</p>
+        <label class="server-field">
+          <span>云渲染服务地址</span>
+          <input id="serverUrl" type="url" placeholder="http://192.168.1.20:3000" autocomplete="url" />
+        </label>
+        <label class="server-field compact">
+          <span>点云文件</span>
+          <input id="pointCloudFile" list="pointCloudFiles" placeholder="GlobalMap.pcd" autocomplete="off" />
+          <datalist id="pointCloudFiles"></datalist>
+        </label>
+        <div class="actions">
+          <button id="start">启动云渲染会话</button>
+          <span id="status">等待启动</span>
+        </div>
+      </section>
+
+      <section class="viewer-card">
+        <video id="stream" autoplay playsinline muted></video>
+        <div class="hint">左键拖拽旋转，滚轮缩放。画面来自远程服务端渲染。</div>
+      </section>
+    </main>
+    <script type="module" src="/client-turn.js"></script>
+  </body>
+</html>
